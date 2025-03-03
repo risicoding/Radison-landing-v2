@@ -12,24 +12,25 @@ const Hero = () => {
   return (
     <div>
       <Spotlight />
-      <div className="flex min-h-screen flex-col items-start justify-center gap-3 text-start md:text-center">
+      <div className="flex min-h-[calc(100vh-160px)] flex-col items-start justify-end gap-3 text-start md:text-center">
         <div className="flex flex-col items-start justify-center gap-6 px-6 md:items-center">
-          <div className="flex items-center text-neutral-300 border-neutral-700 bg-transparent">
+          <div className="flex items-center border-neutral-700 bg-transparent text-neutral-300">
             {Array.from({ length: 4 }).map((_, idx) => (
               <div key={`testimonial-${idx + 1}`}>
-
                 <img
                   src={`https://randomuser.me/api/portraits/men/4${idx}.jpg`}
                   width={10}
                   height={10}
-                  style={{translate:-idx*6}}
-                  className='size-6 rounded-full'
+                  style={{
+                    translate: -idx * 6,
+                    filter: `brightness(${((idx + 7) / 10) * 90}%)`,
+                  }}
+                  className="size-6 rounded-full border border-white"
                   alt={`Testimonials-pic-${idx + 1}`}
                 />
-
               </div>
             ))}
-            <span className="text-xs mr-2 font-semibold">40k+</span>
+            <span className="mr-1 text-xs font-semibold">40k+</span>
             <span className="text-xs">Happy Users</span>
           </div>
           <div className="flex flex-col items-start space-y-4 md:items-center">
