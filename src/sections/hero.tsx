@@ -12,7 +12,7 @@ const Hero = () => {
   return (
     <div>
       <Spotlight />
-      <div className="flex min-h-[calc(100vh-200px)] flex-col items-start justify-end gap-3 text-start md:text-center">
+      <div className="flex min-h-[calc(100vh-160px)] flex-col items-start justify-end gap-3 text-start md:text-center">
         <div className="flex flex-col items-start justify-center gap-6 px-6 md:items-center">
           <div className="flex items-center border-neutral-700 bg-transparent text-neutral-300">
             {Array.from({ length: 4 }).map((_, idx) => (

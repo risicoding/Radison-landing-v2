@@ -4,8 +4,7 @@ import { Button } from "./ui/button";
 
 const Navbar = () => {
   return (
-    <div className="flex h-12 w-full items-center justify-center pt-2 sm:pt-9">
-      <div className="fixed z-20 w-full border border-neutral-800 bg-black bg-opacity-20 backdrop-blur-md md:w-[800px] sm:w-[600px] sm:rounded-full">
+      <div className="fixed z-20 w-full border border-neutral-800 bg-black bg-opacity-20 backdrop-blur-md ">
         <nav className="flex w-full items-center justify-between gap-4 bg-transparent px-8 py-3">
           <div className="flex gap-2">
             <Image src="/logo.svg" width={20} height={20} alt="radison-logo" />
@@ -25,7 +24,6 @@ const Navbar = () => {
           </Button>
         </nav>
       </div>
-    </div>
   );
 };
 
