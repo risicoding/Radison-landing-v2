@@ -70,3 +70,7 @@
   }
 }
 
+.custom-selection{
+  @apply selection:bg-neutral-200 selection:text-black
+}
+

@@ -8,9 +8,9 @@ import { Footer } from "@/sections/footer";
 
 const Page = () => {
   return (
-    <div className="mx-auto max-w-3xl space-y-20">
+    <div className="mx-auto max-w-3xl space-y-">
       <Hero />
-      <div className="space-y-20 px-6">
+      <div className="flex flex-col gap-6 px-6">
         <About />
         <Features />
         <Integrations />
