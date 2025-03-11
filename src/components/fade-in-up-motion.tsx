@@ -22,3 +22,5 @@ export const FadeInUpMotion = React.forwardRef<
     />
   );
 });
+
+FadeInUpMotion.displayName='FadeInUpMotion'

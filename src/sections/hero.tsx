@@ -27,7 +27,7 @@ const Hero = () => {
                   transition={{ duration: 0.4 }}
                   key={`testimonial-${idx + 1}`}
                 >
-                  <img
+                  <Image
                     src={`https://randomuser.me/api/portraits/men/4${idx}.jpg`}
                     width={10}
                     height={10}
