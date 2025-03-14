@@ -10,11 +10,13 @@ import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
 import { FadeInUpMotion } from "@/components/fade-in-up-motion";
+import { AnimatedGridPattern } from "@/components/magicui/grid-pattern-animated";
 
 const Hero = () => {
   return (
     <div>
       <Spotlight />
+      <AnimatedGridPattern />
 
       <div className="flex min-h-[calc(100vh+90px)] flex-col items-start justify-center gap-6 text-start selection:bg-neutral-200 selection:text-black md:text-center">
         <div className="flex flex-col items-start justify-center gap-6 px-6 md:items-center">

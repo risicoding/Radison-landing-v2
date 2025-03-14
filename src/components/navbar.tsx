@@ -3,24 +3,74 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { Button } from "./ui/button";
-import { AnimatePresence, motion } from "motion/react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from "motion/react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import HamburgerMenu from "./hamburger-menu";
+import { IoMdArrowRoundUp } from "react-icons/io";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [width, setWidth] = useState<"full" | "md" | "sm">("full");
+  const { scrollYProgress } = useScroll();
+
+  useMotionValueEvent(scrollYProgress, "change", (current) => {
+    const diff = scrollYProgress.getPrevious()! - current;
+    console.log(current, diff);
+    if (diff > 0) return setWidth("md");
+    setWidth(current === 0 ? "full" : current > 0.1 ? "sm" : "md");
+  });
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      transition={{ opacity: { duration: 0.8 }, y: { duration: 0.1 } }}
-      className="fixed z-20 w-full p-3"
+      initial={{
+        opacity: 0,
+        y: -20,
+      }}
+      whileInView={{
+        y: 0,
+        opacity: 1,
+
+        paddingTop: width === "md" || width == "sm" ? "0.75rem" : "0rem",
+      }}
+      transition={{
+        opacity: { duration: 0.8 },
+        y: { duration: 0.1 },
+      }}
+      className="fixed z-20 w-full"
     >
-      <nav className="flex w-full items-center justify-between gap-4 rounded-full border border-neutral-800 bg-black bg-opacity-20 px-8 backdrop-blur-md py-4">
+      <motion.nav
+        initial={{
+          borderRadius: 0,
+          width: width === "full" ? "100%" : width === "md" ? "96%" : "60%",
+        }}
+        animate={{
+          width: width === "full" ? "100%" : width === "md" ? "96%" : "60%",
+          borderRadius: width === "sm" || width === "md" ? "999px" : "0px",
+        }}
+        transition={{
+          duration: 2,
+          type: "spring",
+          damping: 20,
+          stiffness: 200,
+        }}
+        className="mx-auto flex w-full items-center justify-between gap-4 border border-neutral-800 bg-black bg-opacity-20 px-8 py-4 backdrop-blur-md"
+      >
         <div className="flex gap-2">
           <Image src="/logo.svg" width={20} height={20} alt="radison-logo" />
-          <span className="text-md font-semibold">Radison</span>
+          <span
+            className={cn(
+              "text-md font-semibold",
+              width === "sm" ? "hidden" : "flex",
+            )}
+          >
+            Radison
+          </span>
         </div>
 
         <NavItems
@@ -32,10 +82,14 @@ const Navbar = () => {
         />
 
         <Button
-          className="hidden rounded-full border-2 border-primary sm:flex"
+          className="hidden rounded-full border-2 border-primary bg-transparent sm:flex"
           variant="outline"
         >
-          Sign in
+          {width == "sm" ? (
+            <IoMdArrowRoundUp className="rotate-[45deg] text-primary" />
+          ) : (
+            "Sign In"
+          )}
         </Button>
 
         <div
@@ -44,19 +98,31 @@ const Navbar = () => {
         >
           <HamburgerMenu isOpen={isOpen} />
         </div>
-      </nav>
+      </motion.nav>
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20, backdropFilter: "blur(0px)" }}
-            animate={{ opacity: 1, y: 0, backdropFilter: "blur(10px)" }}
+            initial={{
+              opacity: 0,
+              y: -20,
+              backdropFilter: "blur(0px)",
+              width: "96%",
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              backdropFilter: "blur(10px)",
+
+              width: width === "full" ? "96%" : width === "md" ? "96%" : "60%",
+            }}
             exit={{ opacity: 0, y: -20, backdropFilter: "blur(0px)" }}
             transition={{
               opacity: { duration: 0.3 },
               y: { duration: 0.3 },
               backdropFilter: { duration: 0.1 },
+              duration: 1,
             }}
-            className="mt-4 flex flex-col items-center justify-center gap-6 rounded-[30px] border border-neutral-800 bg-black bg-opacity-20 px-8 py-4 sm:hidden"
+            className="mx-auto mt-4 flex flex-col items-center justify-center gap-6 rounded-[30px] border border-neutral-800 bg-black bg-opacity-20 px-8 py-4 sm:hidden"
           >
             <NavItems
               className=""

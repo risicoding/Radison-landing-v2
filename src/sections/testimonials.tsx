@@ -1,46 +1,43 @@
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/marquee";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { SectionHeader } from "@/components/section-header";
+
 
 const reviews = [
   {
-    name: "Jack",
-    username: "@jack",
-    body: "I've never seen anything like this before. It's amazing. I love it.",
-    img: "https://avatar.vercel.sh/jack",
+    name: "Sophia Carter",
+    username: "@sophiac",
+    body: "This AI saved us hours every week! Highly recommended!",
+    img: "https://randomuser.me/api/portraits/women/45.jpg"
   },
   {
-    name: "Jill",
-    username: "@jill",
-    body: "I don't know what to say. I'm speechless. This is amazing.",
-    img: "https://avatar.vercel.sh/jill",
+    name: "James Anderson",
+    username: "@jamesa",
+    body: "A game-changer! Our business runs smoother than ever.",
+    img: "https://randomuser.me/api/portraits/men/32.jpg"
   },
   {
-    name: "John",
-    username: "@john",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/john",
+    name: "Elena Martinez",
+    username: "@elenam",
+    body: "Seamless automation! Our team is more productive now.",
+    img: "https://randomuser.me/api/portraits/women/12.jpg"
   },
   {
-    name: "Jane",
-    username: "@jane",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/jane",
+    name: "David Brown",
+    username: "@davidb",
+    body: "Cut our manual work by 70%! Fantastic AI tool.",
+    img: "https://randomuser.me/api/portraits/men/50.jpg"
   },
   {
-    name: "Jenny",
-    username: "@jenny",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/jenny",
-  },
-  {
-    name: "James",
-    username: "@james",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/james",
-  },
+    name: "Olivia Wilson",
+    username: "@oliviaw",
+    body: "Feels like having an extra team member. Love it!",
+    img: "https://randomuser.me/api/portraits/women/28.jpg"
+  }
 ];
+
+
 
 const firstRow = reviews.slice(0, reviews.length / 2);
 const secondRow = reviews.slice(reviews.length / 2);
@@ -61,9 +58,9 @@ const ReviewCard = ({
       className={cn(
         "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
         // light styles
-        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        "border-gray-950/[.1] bg-black hover:bg-neutral-950/[.05]",
         // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+        "dark:hover:bg-g-50/[.15] dark:border-gray-50/[.1] dark:bg-neutral-950",
       )}
     >
       <div className="flex flex-row items-center gap-2">
@@ -88,22 +85,19 @@ const ReviewCard = ({
 
 export function Testimonials() {
   return (
-    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-      <Button className="mb-12" variant="outline">
-        Social Proof
-      </Button>
-      <Marquee pauseOnHover className="[--duration:20s]">
+    <div className="relative flex h-[500px] w-full flex-row items-center justify-center overflow-hidden">
+      <Marquee pauseOnHover vertical className="[--duration:20s]">
         {firstRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <Marquee reverse pauseOnHover className="[--duration:20s]">
+      <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
         {secondRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-black"></div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black"></div>
     </div>
   );
 }

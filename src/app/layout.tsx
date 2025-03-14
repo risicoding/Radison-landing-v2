@@ -18,8 +18,9 @@ export default function RootLayout({
       <body
         className="dark"
       >
-        <Navbar />
+        <Navbar/>
         {children}
+
       </body>
     </html>
   );
