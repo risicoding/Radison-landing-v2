@@ -53,8 +53,8 @@ const Hero = () => {
               </h1>
             </FadeInUpMotion>
 
-            <FadeInUpMotion>
-              <p className="hidden text-sm text-neutral-400 md:flex">
+          <FadeInUpMotion>
+              <p className="hidden text-sm max-w-md text-neutral-400 md:flex">
                 {heroSection.subtitle}
               </p>
             </FadeInUpMotion>

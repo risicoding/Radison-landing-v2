@@ -3,16 +3,6 @@
 import { features } from "@/content";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
-import {
-  IconAdjustmentsBolt,
-  IconCloud,
-  IconCurrencyDollar,
-  IconEaseInOut,
-  IconHeart,
-  IconHelp,
-  IconRouteAltLeft,
-  IconTerminal2,
-} from "@tabler/icons-react";
 
 export function Features() {
   return (
