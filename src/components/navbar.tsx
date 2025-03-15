@@ -15,6 +15,7 @@ import HamburgerMenu from "./hamburger-menu";
 import { IoMdArrowRoundUp } from "react-icons/io";
 
 const navItems = [
+  {name:'Home',href:'/'},
   { name: "Pricing", href: "/pricing" },
   { name: "Contact", href: "/contact" },
   { name: "About us", href: "/about" },
@@ -26,8 +27,6 @@ const Navbar = () => {
   const { scrollYProgress } = useScroll();
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
-    const prev = scrollYProgress.getPrevious() || 0;
-    if (prev > current) return setWidth("md");
     setWidth(current === 0 ? "full" : current > 0.1 ? "sm" : "md");
   });
 

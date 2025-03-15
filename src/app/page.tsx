@@ -6,6 +6,10 @@ import { Testimonials } from "@/sections/testimonials";
 import { Footer } from "@/sections/footer";
 
 import { Integrations } from "@/sections/integrations";
+import Pricing from "@/sections/pricing";
+import { Faq } from "@/sections/faq";
+import { Contact } from "@/sections/contact";
+
 const Page = () => {
   return (
     <div className="space-y- mx-auto max-w-4xl">
@@ -14,7 +18,10 @@ const Page = () => {
         <About />
         <Features />
         <Integrations />
+        <Pricing />
         <Testimonials />
+        <Contact />
+        <Faq />
         <Footer />
       </div>
     </div>
